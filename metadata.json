@@ -1,0 +1,6 @@
+{
+  "name": "Nucleus Association",
+  "description": "Official portal of Nucleus – A Student Association of Nabadwip and Cultural Centre in Nabadwip, Nadia, West Bengal featuring verified public activities, milestones, and community initiatives.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
