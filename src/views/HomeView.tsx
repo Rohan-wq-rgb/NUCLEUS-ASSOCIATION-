@@ -3,6 +3,7 @@ import { PageId, SchoolNotice, SchoolEvent } from '../types';
 import { SCHOOL_INFO, NUCLEUS_SOCIAL_DATA, VERIFIED_OBSERVATIONS } from '../data/schoolData';
 import { SocialHub } from '../components/SocialHub';
 import { HomeGallerySection } from '../components/HomeGallerySection';
+import { SchoolCrest } from '../components/SchoolCrest';
 import { 
   ArrowRight, 
   MapPin, 
@@ -70,10 +71,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <span>A Student Association of Nabadwip • Cultural Centre</span>
             </div>
 
-            {/* Display Title */}
-            <h1 className="text-[#F8D287] font-extrabold uppercase tracking-tight text-3xl sm:text-5xl lg:text-6xl leading-[1.05] drop-shadow-md">
-              NUCLEUS
-            </h1>
+            {/* Display Title & Official Insignia */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-1">
+              <SchoolCrest size={76} className="shadow-2xl ring-2 ring-[#84F800]" />
+              <div>
+                <h1 className="text-[#F8D287] font-extrabold uppercase tracking-tight text-3xl sm:text-5xl lg:text-6xl leading-[1.05] drop-shadow-md">
+                  NUCLEUS
+                </h1>
+                <span className="text-[#84F800] font-mono font-bold tracking-widest text-xs uppercase block mt-1">
+                  A Student Association of Nabadwip
+                </span>
+              </div>
+            </div>
 
             {/* Real Bio & Description */}
             <p className="text-white/95 text-base sm:text-lg leading-relaxed font-normal max-w-xl">
@@ -175,8 +184,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <span><strong>Schedule:</strong> Always open</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Layers className="w-4 h-4 text-[#F8D287] shrink-0 mt-0.5" />
-                  <span><strong>Insignia:</strong> Circular logo with atom-like symbol & the word Nucleus</span>
+                  <div className="shrink-0 mt-0.5">
+                    <SchoolCrest size={18} />
+                  </div>
+                  <span><strong>Official Insignia:</strong> Circular emblem with neon lime ring, atomic orbits, stylized 'N' & Nucleus mark</span>
                 </li>
               </ul>
             </div>
@@ -251,14 +262,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
             className="bg-[#F8D287] p-7 text-[#151B3C] border-t-4 border-[#3F51B5] shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
           >
             <div className="space-y-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F51B5] block">
-                Visual Identity • Sept 10
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F51B5] block">
+                  Visual Identity • Official Emblem
+                </span>
+                <SchoolCrest size={38} className="ring-2 ring-black" />
+              </div>
               <h3 className="text-xl font-bold uppercase tracking-tight text-[#151B3C]">
                 Official Atom Emblem
               </h3>
               <p className="text-xs text-[#151B3C]/85 leading-relaxed">
-                Circular Nucleus logo with an atom-like symbol and the word Nucleus, symbolizing kinetic energy and student unity.
+                Circular emblem featuring neon lime-green outer ring, glowing cyan atomic electron orbits, sharp calligraphic 'N', and futuristic stencil Nucleus wordmark.
               </p>
             </div>
             <div className="pt-4 flex items-center gap-1.5 text-xs font-bold text-[#3F51B5] uppercase">

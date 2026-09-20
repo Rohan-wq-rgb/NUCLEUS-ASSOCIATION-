@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SCHOOL_INFO, NUCLEUS_SOCIAL_DATA } from '../data/schoolData';
+import { SchoolCrest } from './SchoolCrest';
 import { 
   X, 
   Sparkles, 
@@ -41,15 +42,13 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="bg-[#151B3C] text-white p-5 flex items-center justify-between shrink-0 border-b-2 border-[#25D366]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center font-bold shadow-md">
-              <MessageCircle className="w-6 h-6 fill-current" />
-            </div>
+            <SchoolCrest size={46} className="ring-2 ring-[#84F800]" />
             <div>
               <h3 className="text-base sm:text-lg font-extrabold text-white uppercase tracking-tight">
                 Want to join with us?
               </h3>
-              <p className="text-xs text-[#F8D287]">
-                Contact this WhatsApp group • Nucleus Association
+              <p className="text-xs text-[#84F800] font-medium">
+                Official WhatsApp Group • Nucleus Association
               </p>
             </div>
           </div>

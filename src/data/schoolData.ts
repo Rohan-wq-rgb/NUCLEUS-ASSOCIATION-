@@ -33,7 +33,7 @@ export const SCHOOL_INFO = {
     whatsapp: 'https://chat.whatsapp.com/Ltx1pGT2YauKi5PtIJB8ah?s=cl&p=a&mlu=4&ilr=4'
   },
   insignia: {
-    description: 'Circular Nucleus logo with an atom-like symbol and the word Nucleus',
+    description: "Official circular emblem with neon lime-green outer ring, electric cyan atomic orbital paths with electron nodes, central stylized sharp 'N' core, and futuristic stencil 'NUCLEUS' typography",
     updatedDate: 'September 10'
   }
 };
@@ -88,7 +88,7 @@ export const VERIFIED_OBSERVATIONS: SocialPostObservation[] = [
     platform: 'Facebook',
     dateOrTime: 'September Release',
     title: 'Official Insignia Launch',
-    text: 'Unveiling the official circular Nucleus logo with an atom-like symbol and the word Nucleus representing energy, knowledge, and unity.',
+    text: "Unveiling the official circular Nucleus logo with neon lime ring, atomic electron orbital paths, stylized sharp 'N', and futuristic stencil Nucleus wordmark symbolizing energy, intellect, and student solidarity.",
     type: 'Insignia Showcase',
     category: 'Branding',
     confidence: 'high',

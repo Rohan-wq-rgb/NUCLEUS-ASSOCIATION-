@@ -49,17 +49,29 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenApplyMod
             
             {/* Visual Insignia Presentation */}
             <div className="lg:col-span-5">
-              <div className="border-4 border-[#3F51B5] shadow-lg p-6 bg-[#FCF3E1] flex flex-col items-center text-center space-y-4">
-                <SchoolCrest size={140} variant="cobalt" />
-                <div className="p-3 bg-[#2A3679] text-white w-full">
+              <div className="border-4 border-[#151B3C] shadow-xl p-6 bg-[#0B0F1C] flex flex-col items-center text-center space-y-4">
+                <div className="p-2 bg-black rounded-full shadow-2xl ring-4 ring-[#84F800]/60">
+                  <SchoolCrest size={150} />
+                </div>
+                <div className="p-3 bg-[#151B3C] text-white w-full border-t border-[#84F800]/40 space-y-2">
                   <h3 className="font-extrabold text-sm uppercase tracking-wider text-[#F8D287]">
                     Official Insignia of Nucleus
                   </h3>
-                  <p className="text-[11px] text-white/80 mt-1">
-                    "Circular Nucleus logo with an atom-like symbol and the word Nucleus"
+                  <p className="text-[11px] text-white/85">
+                    "Official circular Nucleus badge featuring neon lime-green outer ring, electric cyan-blue atomic orbital paths, central sharp 'N' emblem, and futuristic stencil Nucleus wordmark."
                   </p>
-                  <p className="text-[10px] text-[#F8D287]/90 mt-0.5">
-                    Official Cover Release: September 10, 2023
+                  <div className="grid grid-cols-2 gap-1.5 pt-1 text-[10px] text-left">
+                    <div className="bg-white/5 p-1.5 border border-white/10">
+                      <span className="text-[#84F800] font-bold block">Neon Green Ring</span>
+                      <span className="text-white/70">Solidarity & Vitality</span>
+                    </div>
+                    <div className="bg-white/5 p-1.5 border border-white/10">
+                      <span className="text-[#00E5FF] font-bold block">Atomic Orbits</span>
+                      <span className="text-white/70">Kinetic Energy & Science</span>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-[#84F800] font-mono mt-1">
+                    Verified Release: September 10, 2023
                   </p>
                 </div>
               </div>

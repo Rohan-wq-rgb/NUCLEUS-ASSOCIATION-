@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SCHOOL_INFO, NUCLEUS_SOCIAL_DATA } from '../data/schoolData';
+import { SchoolCrest } from './SchoolCrest';
 import { 
   MessageCircle, 
   X, 
@@ -31,14 +32,12 @@ export const FloatingContactWidget: React.FC = () => {
           {/* Card Header */}
           <div className="bg-[#151B3C] text-white p-4 flex items-center justify-between border-b-2 border-[#25D366]">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center text-white">
-                <MessageCircle className="w-4 h-4 fill-current" />
-              </div>
+              <SchoolCrest size={34} />
               <div>
                 <h4 className="font-bold text-sm leading-tight text-white">
                   Nucleus Association
                 </h4>
-                <p className="text-[11px] text-[#F8D287]">
+                <p className="text-[11px] text-[#84F800] font-medium">
                   Want to join with us?
                 </p>
               </div>

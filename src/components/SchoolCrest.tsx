@@ -1,60 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import officialLogoImg from '../assets/images/nucleus-logo.jpg';
 
 interface SchoolCrestProps {
   className?: string;
   size?: number;
-  variant?: 'gold' | 'cobalt' | 'white';
+  variant?: 'gold' | 'cobalt' | 'white' | 'original';
 }
 
 export const SchoolCrest: React.FC<SchoolCrestProps> = ({ 
   className = '', 
   size = 48,
-  variant = 'gold' 
+  variant = 'original' 
 }) => {
-  const strokeColor = variant === 'cobalt' ? '#3F51B5' : variant === 'white' ? '#FFFFFF' : '#F8D287';
-  const fillColor = variant === 'cobalt' ? '#F8D287' : '#3F51B5';
+  const [imageError, setImageError] = useState(false);
+
+  // Border treatment based on container variant if needed
+  const ringAccent = variant === 'gold' 
+    ? 'ring-2 ring-[#F8D287]' 
+    : variant === 'cobalt' 
+    ? 'ring-2 ring-[#3F51B5]' 
+    : 'ring-2 ring-[#84F800]';
 
   return (
     <div 
-      className={`relative inline-flex items-center justify-center shrink-0 ${className}`}
+      className={`relative inline-flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-black ${ringAccent} ${className}`}
       style={{ width: size, height: size }}
-      aria-label="Nucleus Association Crest"
+      aria-label="Nucleus Association Official Logo"
     >
-      <svg 
-        viewBox="0 0 100 100" 
-        width={size} 
-        height={size} 
-        className="w-full h-full drop-shadow-sm"
-      >
-        {/* Outer Circular Seal */}
-        <circle cx="50" cy="50" r="46" fill={fillColor} stroke={strokeColor} strokeWidth="3.5" />
-        <circle cx="50" cy="50" r="41" fill="none" stroke={strokeColor} strokeWidth="1" strokeDasharray="3,2" />
-        
-        {/* Nucleus Core & Electron Orbits Emblem */}
-        <ellipse cx="50" cy="42" rx="24" ry="10" fill="none" stroke={strokeColor} strokeWidth="1.8" transform="rotate(-25 50 42)" opacity="0.85" />
-        <ellipse cx="50" cy="42" rx="24" ry="10" fill="none" stroke={strokeColor} strokeWidth="1.8" transform="rotate(25 50 42)" opacity="0.85" />
-        <ellipse cx="50" cy="42" rx="24" ry="10" fill="none" stroke={strokeColor} strokeWidth="1.8" transform="rotate(90 50 42)" opacity="0.85" />
-        
-        {/* Central Core Nucleus Spark */}
-        <circle cx="50" cy="42" r="5" fill={strokeColor} />
-        <circle cx="50" cy="42" r="2.5" fill={fillColor} />
-
-        {/* Open Book of Knowledge at Base */}
-        <path
-          d="M32 72 C41 70 47 73 50 75 C53 73 59 70 68 72 L68 81 C59 79 53 82 50 84 C47 82 41 79 32 81 Z"
-          fill={strokeColor}
+      {!imageError ? (
+        <img
+          src={officialLogoImg}
+          alt="Nucleus Association Official Logo"
+          referrerPolicy="no-referrer"
+          onError={() => setImageError(true)}
+          className="w-full h-full object-cover rounded-full"
         />
-        <path
-          d="M50 75 L50 84"
-          stroke={fillColor}
-          strokeWidth="1.5"
-        />
+      ) : (
+        /* Vector SVG Fallback strictly reproducing the uploaded atom & N motif */
+        <svg 
+          viewBox="0 0 100 100" 
+          width={size} 
+          height={size} 
+          className="w-full h-full rounded-full bg-black p-1"
+        >
+          {/* Neon Lime Green Outer Ring */}
+          <circle cx="50" cy="50" r="47" fill="#040608" stroke="#84F800" strokeWidth="4" />
 
-        {/* Association Rays */}
-        <circle cx="50" cy="22" r="2" fill={strokeColor} />
-        <circle cx="34" cy="52" r="1.8" fill={strokeColor} />
-        <circle cx="66" cy="52" r="1.8" fill={strokeColor} />
-      </svg>
+          {/* Atomic Orbital Ellipses in Cyan */}
+          <ellipse cx="50" cy="45" rx="30" ry="12" fill="none" stroke="#00E5FF" strokeWidth="2" transform="rotate(-30 50 45)" opacity="0.9" />
+          <ellipse cx="50" cy="45" rx="30" ry="12" fill="none" stroke="#00B0FF" strokeWidth="2" transform="rotate(30 50 45)" opacity="0.9" />
+          <ellipse cx="50" cy="45" rx="30" ry="12" fill="none" stroke="#2979FF" strokeWidth="2" transform="rotate(90 50 45)" opacity="0.85" />
+
+          {/* Electron Nodes */}
+          <circle cx="30" cy="35" r="2.5" fill="#00E5FF" />
+          <circle cx="68" cy="55" r="2.5" fill="#00E5FF" />
+          <circle cx="50" cy="18" r="2.5" fill="#00E5FF" />
+
+          {/* Central Stylized Blade 'N' in Neon Green */}
+          <path
+            d="M42 56 L42 36 L45 34 L54 52 L54 36 L58 36 L58 56 L55 58 L46 40 L46 56 Z"
+            fill="#84F800"
+          />
+
+          {/* Stencil 'NUCLEUS' Text at Base */}
+          <text
+            x="50"
+            y="85"
+            textAnchor="middle"
+            fill="#84F800"
+            fontFamily="monospace, sans-serif"
+            fontWeight="900"
+            fontSize="10"
+            letterSpacing="1.5"
+          >
+            NUCLEUS
+          </text>
+        </svg>
+      )}
     </div>
   );
 };
+
