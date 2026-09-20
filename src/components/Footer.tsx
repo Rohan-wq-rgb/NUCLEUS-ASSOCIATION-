@@ -11,7 +11,8 @@ import {
   Facebook,
   Instagram,
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  MessageCircle
 } from 'lucide-react';
 
 interface FooterProps {
@@ -63,6 +64,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenApplyModal }) 
                 <span>Official Social Channels</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
+                <a
+                  href={SCHOOL_INFO.whatsappGroup}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white transition-colors flex items-center gap-1.5 text-xs font-bold shadow-xs"
+                  title="Nucleus Association WhatsApp Group"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  <span>WhatsApp Group</span>
+                </a>
                 <a
                   href={NUCLEUS_SOCIAL_DATA.facebook.url}
                   target="_blank"
@@ -163,10 +174,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenApplyModal }) 
                 </button>
               </li>
               <li>
-                <button onClick={onOpenApplyModal} className="hover:text-[#F8D287] text-[#F8D287] font-semibold transition-colors text-left flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3" />
-                  <span>Submit Inquiry to Association</span>
-                </button>
+                <a
+                  href={SCHOOL_INFO.whatsappGroup}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-emerald-300 text-emerald-300 font-bold transition-colors text-left flex items-center gap-1.5"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  <span>Want to join with us? WhatsApp Group</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -186,16 +202,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenApplyModal }) 
                 <Clock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span>Operating Schedule: Always open</span>
               </div>
-              <div className="p-3 bg-[#151B3C]/80 border border-[#F8D287]/30 text-[11px] text-white/90">
-                <strong className="block text-[#F8D287] mb-1">Direct Contact Method:</strong>
-                Reach association coordinators directly via direct messaging on our verified Facebook Page or Instagram profile.
+              <div className="p-3 bg-[#151B3C]/80 border border-[#F8D287]/30 text-[11px] text-white/90 space-y-1">
+                <strong className="block text-[#F8D287]">Want to join with us?</strong>
+                <p>
+                  Contact this group via our official WhatsApp group link or direct message on Facebook/Instagram.
+                </p>
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 space-y-2">
+              <a
+                href={SCHOOL_INFO.whatsappGroup}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-extrabold py-2.5 px-3 uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 text-center"
+              >
+                <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                <span>Join WhatsApp Group</span>
+              </a>
               <button
                 onClick={() => onNavigate('contact')}
-                className="w-full bg-[#3F51B5] hover:bg-[#F8D287] hover:text-[#151B3C] text-white text-xs font-bold py-2.5 px-3 uppercase tracking-wider transition-colors text-center"
+                className="w-full bg-[#3F51B5] hover:bg-[#F8D287] hover:text-[#151B3C] text-white text-xs font-bold py-2 px-3 uppercase tracking-wider transition-colors text-center block"
               >
                 View Official Touchpoints
               </button>

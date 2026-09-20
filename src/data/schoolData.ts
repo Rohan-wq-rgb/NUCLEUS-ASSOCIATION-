@@ -18,9 +18,9 @@ export const SCHOOL_INFO = {
   bio: 'A Student Association of Nabadwip.',
   address: 'Nabadwip, Nadia, West Bengal, India',
   hours: 'Always open',
-  phone: 'Direct message via Facebook or Instagram',
-  email: 'contact via official social media channels',
-  whatsappHotline: '',
+  phone: 'Join our WhatsApp Group',
+  email: 'contact via official WhatsApp group & social channels',
+  whatsappGroup: 'https://chat.whatsapp.com/Ltx1pGT2YauKi5PtIJB8ah?s=cl&p=a&mlu=4&ilr=4',
   stats: {
     nature: 'Student Association',
     classification: 'Cultural Centre',
@@ -29,7 +29,8 @@ export const SCHOOL_INFO = {
   },
   socials: {
     facebook: 'https://www.facebook.com/people/Nucleus-Nabadwip/61550786618685/',
-    instagram: 'https://www.instagram.com/nucleus_association/'
+    instagram: 'https://www.instagram.com/nucleus_association/',
+    whatsapp: 'https://chat.whatsapp.com/Ltx1pGT2YauKi5PtIJB8ah?s=cl&p=a&mlu=4&ilr=4'
   },
   insignia: {
     description: 'Circular Nucleus logo with an atom-like symbol and the word Nucleus',

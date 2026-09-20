@@ -14,7 +14,8 @@ import {
   Instagram,
   ExternalLink,
   Layers,
-  Heart
+  Heart,
+  MessageCircle
 } from 'lucide-react';
 
 interface AboutViewProps {
@@ -235,13 +236,15 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onOpenApplyMod
               <span>View Public Activities</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
-            <button
-              onClick={onOpenApplyModal}
-              className="bg-[#F8D287] hover:bg-[#FBE8C2] text-[#151B3C] px-5 py-2.5 font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+            <a
+              href={SCHOOL_INFO.whatsappGroup}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 font-extrabold uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-xs"
             >
-              <span>Connect with Nucleus</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Want to join with us? Contact WhatsApp</span>
+            </a>
           </div>
         </div>
       </section>

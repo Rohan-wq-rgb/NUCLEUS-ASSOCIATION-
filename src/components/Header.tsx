@@ -11,7 +11,8 @@ import {
   ExternalLink,
   ShieldCheck,
   MapPin,
-  Clock
+  Clock,
+  MessageCircle
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -64,6 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
       label: 'Activities & Timeline',
       hasDropdown: true,
       dropdownItems: [
+        { label: 'Past Activities Gallery', desc: 'Photographic archives of past student events & assemblies', action: () => { onNavigate('home'); setTimeout(() => document.getElementById('association-gallery')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
         { label: 'Public Post Feed', desc: 'Chronological timeline of observed public posts', page: 'activities' as PageId },
         { label: '#20yearslater Assembly', desc: 'August milestone gathering', page: 'activities' as PageId },
         { label: 'Nabadwip Bakultala Praktanee', desc: 'Community & alumni assembly', page: 'activities' as PageId },
@@ -77,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
       dropdownItems: [
         { label: 'Student Association Initiatives', desc: 'Cultural and student fellowship in Nabadwip', page: 'community' as PageId },
         { label: 'Alumni & Fellow Network', desc: 'Connecting past and present members', page: 'community' as PageId },
-        { label: 'Submit Community Inquiry', desc: 'Connect directly with association coordinators', action: onOpenApplyModal }
+        { label: 'Want to join with us?', desc: 'Contact official WhatsApp group directly', action: () => window.open(SCHOOL_INFO.whatsappGroup, '_blank') }
       ]
     },
     { id: 'contact' as PageId, label: 'Connect & Socials' }
@@ -105,6 +107,16 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
         
         <div className="flex items-center gap-3 sm:gap-4 text-xs ml-auto flex-wrap">
+          <a 
+            href={SCHOOL_INFO.whatsappGroup} 
+            target="_blank" 
+            rel="noreferrer"
+            className="flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-2 py-0.5 font-bold text-[11px] transition-colors"
+          >
+            <MessageCircle className="w-3 h-3 fill-current" />
+            <span>Join WhatsApp Group</span>
+          </a>
+          <span className="text-white/40">|</span>
           <a 
             href={SCHOOL_INFO.socials.facebook} 
             target="_blank" 
@@ -235,15 +247,17 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* Action CTA Button: Cobalt Blue on Pale Gold */}
+          {/* Action CTA Button: WhatsApp Community */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenApplyModal}
-              className="bg-[#3F51B5] hover:bg-[#2A3679] text-white px-4 py-2.5 rounded-none font-bold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-2"
+            <a
+              href={SCHOOL_INFO.whatsappGroup}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-none font-extrabold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-1.5"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#F8D287]" />
-              <span>Connect / Inquire</span>
-            </button>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Join WhatsApp Group</span>
+            </a>
           </div>
         </div>
       </div>
@@ -290,16 +304,16 @@ export const Header: React.FC<HeaderProps> = ({
             ))}
 
             <div className="pt-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenApplyModal();
-                }}
-                className="w-full bg-[#3F51B5] hover:bg-[#2A3679] text-white font-bold py-3 text-center uppercase tracking-wider text-xs shadow flex items-center justify-center gap-2"
+              <a
+                href={SCHOOL_INFO.whatsappGroup}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold py-3 text-center uppercase tracking-wider text-xs shadow flex items-center justify-center gap-2"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#F8D287]" />
-                <span>Submit Association Inquiry</span>
-              </button>
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>Want to join with us? Contact WhatsApp</span>
+              </a>
             </div>
           </nav>
         </div>

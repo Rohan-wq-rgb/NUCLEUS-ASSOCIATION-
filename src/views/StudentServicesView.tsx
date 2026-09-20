@@ -1,5 +1,5 @@
 import React from 'react';
-import { STUDENT_SERVICES, NUCLEUS_SOCIAL_DATA } from '../data/schoolData';
+import { STUDENT_SERVICES, NUCLEUS_SOCIAL_DATA, SCHOOL_INFO } from '../data/schoolData';
 import { PageId } from '../types';
 import { 
   Users, 
@@ -12,7 +12,8 @@ import {
   Instagram,
   ExternalLink,
   Layers,
-  HeartHandshake
+  HeartHandshake,
+  MessageCircle
 } from 'lucide-react';
 
 interface StudentServicesViewProps {
@@ -94,14 +95,23 @@ export const StudentServicesView: React.FC<StudentServicesViewProps> = ({ onNavi
                 Public Digital Community
               </span>
               <h3 className="text-xl sm:text-2xl font-extrabold uppercase">
-                Connect with Fellow Students & Organizers
+                Want to join with us? Connect with Organizers
               </h3>
               <p className="text-xs sm:text-sm text-white/80 max-w-xl">
-                Stay updated with cultural updates, photography releases, and upcoming community assemblies directly on Facebook and Instagram.
+                Join our official WhatsApp group for community conversations or follow our verified Facebook and Instagram handles.
               </p>
             </div>
 
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href={SCHOOL_INFO.whatsappGroup}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 text-xs font-extrabold flex items-center gap-1.5 uppercase transition-colors"
+              >
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>Join WhatsApp</span>
+              </a>
               <a
                 href={NUCLEUS_SOCIAL_DATA.facebook.url}
                 target="_blank"

@@ -4,15 +4,16 @@ import { PageId } from '../types';
 import { 
   MapPin, 
   Clock, 
-  Send, 
-  CheckCircle2, 
-  ShieldCheck, 
   ExternalLink,
   Facebook,
   Instagram,
   Sparkles,
   Users,
-  Share2
+  MessageCircle,
+  Copy,
+  Check,
+  ArrowRight,
+  ShieldCheck
 } from 'lucide-react';
 
 interface ContactViewProps {
@@ -21,18 +22,13 @@ interface ContactViewProps {
 }
 
 export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenApplyModal }) => {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    contact: '',
-    role: 'Student in Nabadwip',
-    subject: 'Cultural Initiative',
-    message: ''
-  });
+  const [copied, setCopied] = useState(false);
+  const whatsappUrl = SCHOOL_INFO.whatsappGroup;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(whatsappUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
@@ -48,7 +44,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenAppl
             Connect with Nucleus Association
           </h1>
           <p className="text-white/90 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Verified public communication touchpoints and social channels for Nucleus Nabadwip.
+            Want to join with us? Contact and connect with our coordinators and student community through our official WhatsApp group and verified social channels.
           </p>
         </div>
       </section>
@@ -59,7 +55,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenAppl
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
-            {/* Left Column: Real Contact Cards */}
+            {/* Left Column: Organization Details & Channels */}
             <div className="lg:col-span-5 space-y-6">
               
               <div className="bg-white p-6 border-t-4 border-[#3F51B5] shadow-xs space-y-4">
@@ -95,9 +91,9 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenAppl
                 </div>
 
                 <div className="p-3 bg-[#FCF3E1] border border-[#F8D287] text-[11px] text-[#151B3C] space-y-1">
-                  <span className="font-bold block text-[#2A3679]">Privacy & Real Data Policy</span>
+                  <span className="font-bold block text-[#2A3679]">Community Guidelines</span>
                   <p>
-                    Nucleus communicates primarily via verified public digital touchpoints. Personal mobile numbers and private email addresses are not published to prevent unsolicited spam.
+                    Nucleus communicates directly through our official WhatsApp group and verified public social media channels.
                   </p>
                 </div>
               </div>
@@ -109,6 +105,22 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenAppl
                 </h4>
 
                 <div className="space-y-2.5">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white p-3 flex items-center justify-between transition-colors shadow-2xs"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <MessageCircle className="w-5 h-5 fill-current" />
+                      <div>
+                        <span className="font-bold block text-xs">WhatsApp: Nucleus Group</span>
+                        <span className="text-[11px] text-white/90">Click to join group chat</span>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+
                   <a
                     href={NUCLEUS_SOCIAL_DATA.facebook.url}
                     target="_blank"
@@ -145,137 +157,124 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate, onOpenAppl
 
             </div>
 
-            {/* Right Column: Community Inquiry Form */}
+            {/* Right Column: Want to join with us? WhatsApp Group */}
             <div className="lg:col-span-7">
-              <div className="bg-white p-8 border-t-4 border-[#3F51B5] shadow-xs">
-                <div className="mb-6 space-y-1 pb-4 border-b border-gray-100">
-                  <span className="text-[#3F51B5] text-xs font-bold uppercase tracking-widest block">
-                    Association Inquiry
-                  </span>
-                  <h3 className="text-xl font-bold uppercase tracking-tight text-[#151B3C]">
-                    Leave a Message for Nucleus Coordinators
+              <div className="bg-white p-8 border-t-4 border-[#25D366] shadow-xs space-y-6">
+                
+                <div className="space-y-2 pb-4 border-b border-gray-100">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>Official Member & Student Community</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-[#151B3C]">
+                    Want to join with us? Contact this WhatsApp group
                   </h3>
-                  <p className="text-xs text-[#5F6360]">
-                    Inquiries are received by student association representatives in Nabadwip.
+                  <p className="text-sm text-[#2A3679] leading-relaxed">
+                    Connect directly with students, alumni, and coordinators of Nucleus in Nabadwip through our official WhatsApp group chat.
                   </p>
                 </div>
 
-                {submitted ? (
-                  <div className="py-12 text-center space-y-4">
-                    <CheckCircle2 className="w-16 h-16 text-emerald-600 mx-auto animate-bounce" />
-                    <h4 className="text-xl font-bold text-[#151B3C]">
-                      Thank You, {formData.name}!
-                    </h4>
-                    <p className="text-xs text-[#5F6360] max-w-md mx-auto leading-relaxed">
-                      Your community message regarding <strong>{formData.subject}</strong> has been received. You may also connect via Facebook or Instagram for immediate communication.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setSubmitted(false);
-                        setFormData({
-                          name: '',
-                          contact: '',
-                          role: 'Student in Nabadwip',
-                          subject: 'Cultural Initiative',
-                          message: ''
-                        });
-                      }}
-                      className="px-6 py-2 bg-[#3F51B5] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#2A3679] transition-colors"
+                {/* WhatsApp Group Primary Feature Box */}
+                <div className="bg-[#FCF3E1] border-2 border-[#25D366]/40 p-6 space-y-5">
+                  <div className="flex items-start gap-4">
+                    <div className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shrink-0 shadow-md">
+                      <MessageCircle className="w-8 h-8 fill-current" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-extrabold text-lg text-[#151B3C]">
+                        Nucleus Association WhatsApp Group
+                      </h4>
+                      <p className="text-xs text-[#5F6360]">
+                        Official group link for student fellowship, event notices, cultural gatherings, and direct member coordination.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold px-6 py-3.5 uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-md transition-all text-center"
                     >
-                      Send Another Message
+                      <MessageCircle className="w-4 h-4 fill-current" />
+                      <span>Join WhatsApp Group</span>
+                      <ExternalLink className="w-4 h-4 ml-1" />
+                    </a>
+
+                    <button
+                      onClick={handleCopyLink}
+                      className="bg-white hover:bg-gray-50 border border-gray-300 text-[#151B3C] font-bold px-5 py-3.5 text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-4 h-4 text-emerald-600" />
+                          <span className="text-emerald-700">Link Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4 text-[#3F51B5]" />
+                          <span>Copy Group Link</span>
+                        </>
+                      )}
                     </button>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-bold text-[#151B3C] mb-1">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Your name"
-                          className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-[#3F51B5]"
-                        />
-                      </div>
 
-                      <div>
-                        <label className="block text-xs font-bold text-[#151B3C] mb-1">
-                          Contact (Email / Phone / IG Handle) *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={formData.contact}
-                          onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                          placeholder="How can coordinators reply?"
-                          className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-[#3F51B5]"
-                        />
-                      </div>
+                  {/* Direct Link URL Display */}
+                  <div className="p-3 bg-white border border-gray-200 text-xs break-all select-all font-mono text-[#2A3679]">
+                    <span className="text-[#5F6360] font-sans font-semibold block text-[11px] mb-0.5">
+                      Direct WhatsApp Invitation Link:
+                    </span>
+                    {whatsappUrl}
+                  </div>
+                </div>
+
+                {/* Who can join / Community Highlights */}
+                <div className="space-y-3 pt-2">
+                  <h4 className="font-bold text-sm uppercase tracking-wide text-[#151B3C]">
+                    Who Can Join?
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#2A3679]">
+                    <div className="bg-[#FCF3E1]/60 p-3 border-l-3 border-[#3F51B5] space-y-1">
+                      <strong className="block text-[#151B3C]">Current Students in Nabadwip</strong>
+                      <span>Connect for cultural programs, discussions, and creative showcases.</span>
                     </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-bold text-[#151B3C] mb-1">
-                          Association Role / Affiliation
-                        </label>
-                        <select
-                          value={formData.role}
-                          onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                          className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-[#3F51B5] bg-white"
-                        >
-                          <option>Student in Nabadwip</option>
-                          <option>Alumni Member</option>
-                          <option>Bakultala Praktanee Participant</option>
-                          <option>Cultural Organizer</option>
-                          <option>Nabadwip Citizen / Supporter</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-bold text-[#151B3C] mb-1">
-                          Inquiry Subject
-                        </label>
-                        <select
-                          value={formData.subject}
-                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-[#3F51B5] bg-white"
-                        >
-                          <option>Cultural Initiative</option>
-                          <option>#20yearslater Fellowship</option>
-                          <option>Student Collaboration</option>
-                          <option>Alumni Network</option>
-                          <option>General Question</option>
-                        </select>
-                      </div>
+                    <div className="bg-[#FCF3E1]/60 p-3 border-l-3 border-[#F8D287] space-y-1">
+                      <strong className="block text-[#151B3C]">Alumni & Fellowship Members</strong>
+                      <span>Stay in touch with the #20yearslater fellowship and Bakultala Praktanee assemblies.</span>
                     </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-[#151B3C] mb-1">
-                        Detailed Message *
-                      </label>
-                      <textarea
-                        required
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="Write your message here..."
-                        className="w-full border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-[#3F51B5]"
-                      ></textarea>
+                    <div className="bg-[#FCF3E1]/60 p-3 border-l-3 border-[#25D366] space-y-1">
+                      <strong className="block text-[#151B3C]">Creative Youth & Volunteers</strong>
+                      <span>Participate in photography, literary, and social welfare drives.</span>
                     </div>
+                    <div className="bg-[#FCF3E1]/60 p-3 border-l-3 border-[#151B3C] space-y-1">
+                      <strong className="block text-[#151B3C]">Community Supporters</strong>
+                      <span>Support educational and cultural enrichment across Nabadwip and Nadia.</span>
+                    </div>
+                  </div>
+                </div>
 
-                    <button
-                      type="submit"
-                      className="w-full sm:w-auto px-8 py-3 bg-[#3F51B5] hover:bg-[#2A3679] text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
-                    >
-                      <Send className="w-4 h-4" />
-                      <span>Submit Inquiry to Nucleus</span>
-                    </button>
-                  </form>
-                )}
+                <div className="p-4 bg-[#3F51B5] text-white flex items-center justify-between gap-4 flex-wrap">
+                  <div className="space-y-0.5">
+                    <span className="font-bold text-xs uppercase tracking-wider text-[#F8D287] block">
+                      Ready to get involved?
+                    </span>
+                    <p className="text-xs text-white/90">
+                      Tap the WhatsApp button above to join and introduce yourself to the group.
+                    </p>
+                  </div>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-[#F8D287] hover:bg-[#FBE8C2] text-[#151B3C] px-4 py-2 font-bold text-xs uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors shrink-0"
+                  >
+                    <span>Open in WhatsApp</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
               </div>
             </div>
 

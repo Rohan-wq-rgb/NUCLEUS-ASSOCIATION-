@@ -12,7 +12,8 @@ import {
   Facebook, 
   Instagram,
   ExternalLink,
-  Heart
+  Heart,
+  MessageCircle
 } from 'lucide-react';
 
 interface AdmissionsViewProps {
@@ -57,13 +58,15 @@ export const AdmissionsView: React.FC<AdmissionsViewProps> = ({ onNavigate, onOp
               </p>
             </div>
 
-            <button
-              onClick={onOpenApplyModal}
-              className="bg-[#3F51B5] hover:bg-[#2A3679] text-white px-7 py-3 font-bold text-xs uppercase tracking-wider transition-colors shrink-0 shadow flex items-center gap-2"
+            <a
+              href={SCHOOL_INFO.whatsappGroup}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-3 font-extrabold text-xs uppercase tracking-wider transition-colors shrink-0 shadow flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-[#F8D287]" />
-              <span>Submit Community Inquiry</span>
-            </button>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Want to join? Contact WhatsApp</span>
+            </a>
           </div>
 
           {/* Guidelines Grid */}
@@ -160,13 +163,23 @@ export const AdmissionsView: React.FC<AdmissionsViewProps> = ({ onNavigate, onOp
 
             <div className="flex flex-wrap gap-4 pt-2">
               <a
+                href={SCHOOL_INFO.whatsappGroup}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 text-xs font-extrabold flex items-center gap-2 transition-colors uppercase tracking-wider"
+              >
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>WhatsApp Group: Join Community</span>
+              </a>
+
+              <a
                 href={NUCLEUS_SOCIAL_DATA.facebook.url}
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#1877F2] hover:bg-[#166fe5] text-white px-5 py-2.5 text-xs font-bold flex items-center gap-2 transition-colors uppercase tracking-wider"
               >
                 <Facebook className="w-4 h-4" />
-                <span>Facebook: Nucleus Nabadwip (149 Followers)</span>
+                <span>Facebook: Nucleus Nabadwip</span>
               </a>
 
               <a

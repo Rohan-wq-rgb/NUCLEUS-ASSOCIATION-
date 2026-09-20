@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId, SchoolNotice, SchoolEvent } from '../types';
 import { SCHOOL_INFO, NUCLEUS_SOCIAL_DATA, VERIFIED_OBSERVATIONS } from '../data/schoolData';
 import { SocialHub } from '../components/SocialHub';
+import { HomeGallerySection } from '../components/HomeGallerySection';
 import { 
   ArrowRight, 
   MapPin, 
@@ -16,7 +17,8 @@ import {
   Layers,
   Facebook,
   Instagram,
-  CheckCircle2
+  CheckCircle2,
+  Camera
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -112,6 +114,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </button>
 
               <button
+                onClick={() => document.getElementById('association-gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-[#151B3C] hover:bg-[#2A3679] text-[#F8D287] border border-[#F8D287]/40 px-4 py-2.5 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-xs"
+              >
+                <Camera className="w-4 h-4 text-[#F8D287]" />
+                <span>Activities Gallery</span>
+              </button>
+
+              <button
                 onClick={() => onNavigate('about')}
                 className="bg-transparent hover:bg-[#F8D287] text-[#F8D287] hover:text-[#151B3C] border-2 border-[#F8D287] px-5 py-2.5 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2"
               >
@@ -119,13 +129,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <button
-                onClick={onOpenApplyModal}
-                className="bg-[#F8D287] hover:bg-[#FBE8C2] text-[#151B3C] px-5 py-2.5 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm"
+              <a
+                href={SCHOOL_INFO.whatsappGroup}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 font-extrabold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-sm"
               >
-                <Sparkles className="w-4 h-4 text-[#3F51B5]" />
-                <span>Submit Inquiry</span>
-              </button>
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>Want to join? WhatsApp Group</span>
+              </a>
             </div>
 
           </div>
@@ -329,6 +341,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </section>
 
+      {/* Activities & Past Events Gallery Section */}
+      <HomeGallerySection onNavigateActivities={() => onNavigate('activities')} />
+
       {/* The Authentic Social Hub */}
       <SocialHub />
 
@@ -366,13 +381,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <span>Instagram Message</span>
             </a>
 
-            <button
-              onClick={onOpenApplyModal}
-              className="bg-[#F8D287] hover:bg-[#FBE8C2] text-[#151B3C] px-5 py-2.5 text-xs font-bold flex items-center gap-2 transition-colors uppercase tracking-wider"
+            <a
+              href={SCHOOL_INFO.whatsappGroup}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 text-xs font-extrabold flex items-center gap-2 transition-colors uppercase tracking-wider shadow-sm"
             >
-              <Sparkles className="w-4 h-4 text-[#3F51B5]" />
-              <span>Submit Web Inquiry</span>
-            </button>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Want to join? Contact WhatsApp</span>
+            </a>
           </div>
         </div>
       </section>

@@ -115,14 +115,24 @@ export const FacultyView: React.FC<FacultyViewProps> = ({ onNavigate }) => {
                 Direct Contact
               </span>
               <h3 className="text-xl sm:text-2xl font-extrabold uppercase">
-                Reach Out to Association Coordinators
+                Want to join with us? Contact Association Coordinators
               </h3>
               <p className="text-xs sm:text-sm text-white/80 max-w-xl">
-                Send a message directly through our verified social channels or the web inquiry desk.
+                Reach association coordinators directly via the official WhatsApp group or our verified social channels.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={SCHOOL_INFO.whatsappGroup}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 text-xs font-extrabold flex items-center gap-1.5 uppercase transition-colors"
+              >
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>WhatsApp Group</span>
+              </a>
+
               <a
                 href={NUCLEUS_SOCIAL_DATA.facebook.url}
                 target="_blank"

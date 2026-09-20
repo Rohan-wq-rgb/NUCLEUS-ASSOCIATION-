@@ -96,3 +96,15 @@ export interface SchoolEvent {
   chiefGuest?: string;
   postUrl?: string;
 }
+
+export interface ActivityGalleryItem {
+  id: string;
+  title: string;
+  category: 'Milestones' | 'Cultural & Arts' | 'Community Initiatives';
+  date: string;
+  location: string;
+  description: string;
+  imageUrl: string;
+  aspectRatio?: string;
+  tags: string[];
+}

@@ -14,7 +14,8 @@ import {
   MapPin,
   ExternalLink,
   Facebook,
-  Instagram
+  Instagram,
+  MessageCircle
 } from 'lucide-react';
 
 interface ProgramsViewProps {
@@ -72,7 +73,7 @@ export const ProgramsView: React.FC<ProgramsViewProps> = ({ onNavigate, onOpenAp
       id: 'creative',
       category: 'Cultural',
       title: 'Media & Photography Showcases',
-      date: 'Observed Activity: Sept 08 (40 Likes recorded)',
+      date: 'Observed Activity: Sept 08',
       description: 'Visual chronicles highlighting the life, environment, and youthful spirit of Nabadwip, shared through official social media broadcasts.',
       highlights: [
         'Authentic photographic observations',
@@ -213,13 +214,15 @@ export const ProgramsView: React.FC<ProgramsViewProps> = ({ onNavigate, onOpenAp
               </p>
             </div>
 
-            <button
-              onClick={onOpenApplyModal}
-              className="bg-[#F8D287] hover:bg-[#FBE8C2] text-[#151B3C] px-6 py-3 font-bold text-xs uppercase tracking-wider transition-colors shrink-0 shadow-sm flex items-center gap-2"
+            <a
+              href={SCHOOL_INFO.whatsappGroup}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3 font-extrabold text-xs uppercase tracking-wider transition-colors shrink-0 shadow-sm flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-[#3F51B5]" />
-              <span>Connect with Association</span>
-            </button>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Want to join? WhatsApp Group</span>
+            </a>
           </div>
 
         </div>
